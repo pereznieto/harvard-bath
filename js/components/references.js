@@ -1,5 +1,5 @@
 import xs from 'xstream';
-import {div, input, h1, h2, h3, h4, p, span, i, hr} from '@cycle/dom';
+import {div, input, h1, h2, h3, h4, p, span, hr} from '@cycle/dom';
 import Helpers from '../utils/Helpers';
 
 const intent = sources => ({
