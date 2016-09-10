@@ -1,5 +1,6 @@
 import xs from 'xstream';
 import {div, input, h1, h2, h3, h4, p, span, hr} from '@cycle/dom';
+import _ from 'lodash';
 import Helpers from '../utils/Helpers';
 
 const intent = sources => ({
@@ -15,12 +16,12 @@ const intent = sources => ({
 const model = action => {
 	return xs.combine(action.surname$, action.initials$, action.year$, action.title$, action.edition$, action.place$, action.publisher$)
 		.map(([surnameRaw, initialsRaw, yearRaw, titleRaw, editionRaw, placeRaw, publisherRaw]) => {
-			const surname = !!surnameRaw ? `${surnameRaw}, ` : '';
-			const initials = !!initialsRaw ? `${initialsRaw}, ` : '';
+			const surname = !!surnameRaw ? `${_.startCase(surnameRaw)}, ` : '';
+			const initials = !!initialsRaw ? `${Helpers.parseInitials(initialsRaw)}, ` : '';
 			const year = !!yearRaw ? `${yearRaw}. ` : '';
 			const title = !!titleRaw ? `_${titleRaw}_. ` : '';
 			const edition = !!editionRaw ? `${editionRaw} ed. ` : '';
-			const place = !!placeRaw ? `${placeRaw}: ` : '';
+			const place = !!placeRaw ? `${_.startCase(placeRaw)}: ` : '';
 			const publisher = !!publisherRaw ? `${publisherRaw}.` : '';
 
 			return `${surname}${initials}${year}${title}${edition}${place}${publisher}`

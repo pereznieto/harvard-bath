@@ -1,4 +1,5 @@
 import {i} from '@cycle/dom';
+import _ from 'lodash';
 
 export default class Helpers {
 	static selectTarget(source, selector, startWith) {
@@ -9,5 +10,21 @@ export default class Helpers {
 		const parts = string.split('_');
 
 		return parts.length < 3 ? string : [parts[0], i(parts[1]), parts[2]];
+	}
+
+	static _split(string) {
+		return _.split(string, '');
+	}
+
+	static _join(array) {
+		return _.join(array, '');
+	}
+
+	static parseInitials(string) {
+		const removeDots = array => _.filter(array, item => item !== '.');
+		const addDots = array => _.map(array, item => `${item}.`);
+		const parseInitials = _.flow([this._split, removeDots, addDots, this._join, _.toUpper]);
+
+		return parseInitials(string);
 	}
 }
