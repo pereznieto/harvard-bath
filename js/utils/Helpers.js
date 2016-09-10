@@ -7,7 +7,7 @@ export default class Helpers {
 	}
 
 	static italicise(string) {
-		const parts = string.split('_');
+		const parts = _.split(string, '_');
 
 		return parts.length < 3 ? string : [parts[0], i(parts[1]), parts[2]];
 	}
