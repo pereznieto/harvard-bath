@@ -3,13 +3,15 @@ import {div, nav, a} from '@cycle/dom';
 import {merge, prop} from 'ramda';
 import BMI from '../../examples/bmi';
 import Hello from '../../examples/hello-world';
+import References from '../references';
 
 export default function Router(sources) {
 	const {router} = sources;
 
 	const match$ = router.define({
 		'/bmi': BMI,
-		'/hello': Hello
+		'/hello': Hello,
+		'/ref': References
 	});
 
 	const page$ = match$.map(({path, value}) => value(merge(sources, {
@@ -19,17 +21,15 @@ export default function Router(sources) {
 	const makeLink = (path, label) => a({props: {href: path}, style: {padding: '1em'}}, label);
 
 	const nav$ = xs.of(nav({style: {marginBottom: '1em'}}, [
-		makeLink('/bmi', 'BMI'),
-		makeLink('/hello', 'Hello')
+		makeLink('/ref', 'References')
 	]));
 
 	const view$ = page$.map(prop('DOM')).flatten();
 
-	const vdom$ = xs.combine(nav$, view$)
-		.map(([navDom, viewDom]) => div([navDom, viewDom]));
+	const vdom$ = xs.combine(nav$, view$).map(([navDom, viewDom]) => div([navDom, viewDom]));
 
 	return {
 		DOM: vdom$,
-		router: xs.of('/bmi')
+		router: xs.of('/ref')
 	}
 }
