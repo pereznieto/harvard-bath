@@ -4,41 +4,31 @@ import _ from 'lodash';
 import Helpers from '../utils/Helpers';
 import Data from '../constants/data';
 
-function intent(DOMSource) {
-	return Helpers.selectTarget(DOMSource, '.refType', 'bookWithAuthor')
-		.map(refType => {
-			const data = Data[refType];
-			const action = {data};
-			_.each(data.inputs, dataInput => action[`${dataInput.name}$`] = Helpers.selectTarget(DOMSource, `.${dataInput.name}`));
-			return action;
-		});
-};
+const intent = DOMSource => Helpers.selectTarget(DOMSource, '.refType', 'bookWithAuthor')
+	.map(refType => {
+		const data = Data[refType];
+		const action = {data};
+		_.each(data.inputs, dataInput => action[`${dataInput.name}$`] = Helpers.selectTarget(DOMSource, `.${dataInput.name}`));
+		return action;
+	});
 
-function model(newValues$) {
-	return newValues$.map(nV => xs.combine(nV.surname$, nV.initials$, nV.year$, nV.title$, nV.edition$, nV.place$, nV.publisher$)
-		.map(([surnameRaw, initialsRaw, yearRaw, titleRaw, editionRaw, placeRaw, publisherRaw]) => {
-			const dataInputs = nV.data.inputs;
-			const surname = dataInputs[0].model(surnameRaw);
-			const initials = dataInputs[1].model(initialsRaw);
-			const year = dataInputs[2].model(yearRaw);
-			const title = dataInputs[3].model(titleRaw);
-			const edition = dataInputs[4].model(editionRaw);
-			const place = dataInputs[5].model(placeRaw);
-			const publisher = dataInputs[6].model(publisherRaw);
+const model = newValues$ => newValues$
+	.map(newValues => {
+		const parseInputs = (...inputs) => Helpers.join(_.map(inputs, (input, i) => newValues.data.inputs[i].model(input)));
+		return xs.combine.apply(this, _.map(_.omit(newValues, 'data'), input => input))
+			.map(combinedInputs => ({
+				details: parseInputs.apply(this, combinedInputs),
+				data: newValues.data
+			}));
+	})
+	.flatten();
 
-			return {
-				details: `${surname}${initials}${year}${title}${edition}${place}${publisher}`,
-				data: nV.data
-			};
-		})).flatten();
-};
-
-function view(value$) {
-	return value$.map(value =>
+const view = value$ => value$
+	.map(value =>
 		div([
 			h1('Harvard (Bath) referencing style'),
-			h2(value.data.name),
 			input('.refType', {attrs: {type: 'text'}}),
+			h2(`How to reference: ${value.data.name}`),
 			h4('Format:'),
 			p('.format', Helpers.italicise(value.data.format)),
 			!_.isEmpty(value.data.examples) && div([
@@ -60,15 +50,9 @@ function view(value$) {
 			])
 		])
 	);
-}
 
-let Reference = function(sources) {
-	let value$ = model(intent(sources.DOM));
-	let vtree$ = view(value$);
-	return {
-		DOM: vtree$,
-		value: value$
-	};
-}
+const Reference = sources => ({
+	DOM: view(model(intent(sources.DOM)))
+});
 
 export default Reference;

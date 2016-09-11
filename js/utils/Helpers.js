@@ -12,18 +12,18 @@ export default class Helpers {
 		return parts.length < 3 ? string : [parts[0], i(parts[1]), parts[2]];
 	}
 
-	static _split(string) {
+	static split(string) {
 		return _.split(string, '');
 	}
 
-	static _join(array) {
+	static join(array) {
 		return _.join(array, '');
 	}
 
 	static parseInitials(string) {
 		const removeDots = array => _.filter(array, item => item !== '.');
 		const addDots = array => _.map(array, item => `${item}.`);
-		const parseInitials = _.flow([this._split, removeDots, addDots, this._join, _.toUpper]);
+		const parseInitials = _.flow([this.split, removeDots, addDots, this.join, _.toUpper]);
 
 		return parseInitials(string);
 	}
