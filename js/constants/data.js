@@ -43,18 +43,6 @@ export default {
 				placeholder: 'Publisher',
 				model: input => !!input ? `${input}.` : ''
 			}
-		],
-		model: action => xs.combine(action.surname$, action.initials$, action.year$, action.title$, action.edition$, action.place$, action.publisher$)
-			.map(([surnameRaw, initialsRaw, yearRaw, titleRaw, editionRaw, placeRaw, publisherRaw]) => {
-				const surname = !!surnameRaw ? `${_.startCase(surnameRaw)}, ` : '';
-				const initials = !!initialsRaw ? `${Helpers.parseInitials(initialsRaw)}, ` : '';
-				const year = !!yearRaw ? `${yearRaw}. ` : '';
-				const title = !!titleRaw ? `_${titleRaw}_. ` : '';
-				const edition = !!editionRaw ? `${editionRaw} ed. ` : '';
-				const place = !!placeRaw ? `${_.startCase(placeRaw)}: ` : '';
-				const publisher = !!publisherRaw ? `${publisherRaw}.` : '';
-
-				return `${surname}${initials}${year}${title}${edition}${place}${publisher}`
-			})
+		]
 	}
 }
