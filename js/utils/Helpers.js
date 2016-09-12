@@ -9,7 +9,19 @@ export default class Helpers {
 	static italicise(string) {
 		const parts = _.split(string, '_');
 
-		return parts.length < 3 ? string : [parts[0], i(parts[1]), parts[2]];
+		switch (parts.length) {
+			case 0:
+			case 1:
+			case 2:
+			default:
+				return string;
+			case 3:
+				return [parts[0], i(parts[1]), parts[2]];
+			case 4:
+				return [parts[0], i(parts[1]), parts[2], i(parts[3])]
+			case 5:
+				return [parts[0], i(parts[1]), parts[2], i(parts[3]), parts[4]];
+		}
 	}
 
 	static split(string) {
