@@ -1,10 +1,14 @@
 import xs from 'xstream';
-import {div, input, h1, h2, h3, h4, p, span, hr} from '@cycle/dom';
+import {div, input, select, option, h1, h2, h3, h4, p, span, hr} from '@cycle/dom';
 import _ from 'lodash';
 import Helpers from '../utils/Helpers';
 import Data from '../constants/data';
 
-const intent = DOMSource => Helpers.selectTarget(DOMSource, '.refType', 'bookWithAuthor')
+const intent = DOMSource => DOMSource
+	.select('.refType')
+	.events('change')
+	.map(e => e.target.value)
+	.startWith('bookWithAuthor')
 	.map(refType => {
 		const data = Data[refType];
 		const action = {data};
@@ -27,7 +31,17 @@ const view = value$ => value$
 	.map(value =>
 		div([
 			h1('Harvard (Bath) referencing style'),
-			input('.refType', {attrs: {type: 'text'}}),
+			select('.refType', [
+				option({attrs: {value: 'bookWithAuthor'}}, 'Book with author'),
+				option({attrs: {value: 'bookWithAuthorOnline'}}, 'Book with author (online)'),
+				option({attrs: {value: 'bookWithEditor'}}, 'Book with editor instead of author'),
+				option({attrs: {value: 'bookWithEditorOnline'}}, 'Book with editor instead of author (online)'),
+				option({attrs: {value: 'bookKnownByTitle'}}, 'Book usually known by its title'),
+				option({attrs: {value: 'bookKnownByTitleOnline'}}, 'Book usually known by its title (online)'),
+				option({attrs: {value: 'chapterInBook'}}, 'One chapter / paper from a collection in a book'),
+				option({attrs: {value: 'journalArticle'}}, 'Journal article'),
+				option({attrs: {value: 'journalArticleOnline'}}, 'Journal article (online)'),
+			]),
 			h2(`How to reference: ${value.data.name}`),
 			h4('Format:'),
 			p('.format', Helpers.italicise(value.data.format)),
