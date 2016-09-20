@@ -9,8 +9,6 @@ export default function Router(sources) {
 	const {router} = sources;
 
 	const match$ = router.define({
-		'/bmi': BMI,
-		'/hello': Hello,
 		'/ref': Reference
 	});
 
@@ -21,7 +19,7 @@ export default function Router(sources) {
 	const makeLink = (path, label) => a({props: {href: path}, style: {padding: '1em'}}, label);
 
 	const nav$ = xs.of(nav({style: {marginBottom: '1em'}}, [
-		makeLink('/ref', 'Reference')
+		// makeLink('/ref', 'Reference')
 	]));
 
 	const view$ = page$.map(prop('DOM')).flatten();
