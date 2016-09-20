@@ -4,6 +4,8 @@ import {createHistory} from 'history';
 import {makeRouterDriver} from 'cyclic-router';
 import Main from './root';
 
+require('../style/index.scss');
+
 const drivers = {
 	DOM: makeDOMDriver('#root'),
 	router: makeRouterDriver(createHistory(), {capture: true})
