@@ -9,7 +9,7 @@ export default function Router(sources) {
 	const {router} = sources;
 
 	const match$ = router.define({
-		'/ref': Reference
+		'/': Reference
 	});
 
 	const page$ = match$.map(({path, value}) => value(merge(sources, {
