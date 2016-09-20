@@ -32,16 +32,18 @@ const view = value$ => value$
 		div('.page.reference', [
 			h1('Harvard (Bath) referencing style'),
 			h2(`How to reference: ${value.data.name}`),
-			select('.refType', [
-				option({attrs: {value: 'bookWithAuthor'}}, 'Book with author'),
-				option({attrs: {value: 'bookWithAuthorOnline'}}, 'Book with author (online)'),
-				option({attrs: {value: 'bookWithEditor'}}, 'Book with editor instead of author'),
-				option({attrs: {value: 'bookWithEditorOnline'}}, 'Book with editor instead of author (online)'),
-				option({attrs: {value: 'bookKnownByTitle'}}, 'Book usually known by its title'),
-				option({attrs: {value: 'bookKnownByTitleOnline'}}, 'Book usually known by its title (online)'),
-				option({attrs: {value: 'chapterInBook'}}, 'One chapter / paper from a collection in a book'),
-				option({attrs: {value: 'journalArticle'}}, 'Journal article'),
-				option({attrs: {value: 'journalArticleOnline'}}, 'Journal article (online)'),
+			div('.c', [
+				select('.refType', [
+					option({attrs: {value: 'bookWithAuthor'}}, 'Book with author'),
+					option({attrs: {value: 'bookWithAuthorOnline'}}, 'Book with author (online)'),
+					option({attrs: {value: 'bookWithEditor'}}, 'Book with editor instead of author'),
+					option({attrs: {value: 'bookWithEditorOnline'}}, 'Book with editor instead of author (online)'),
+					option({attrs: {value: 'bookKnownByTitle'}}, 'Book usually known by its title'),
+					option({attrs: {value: 'bookKnownByTitleOnline'}}, 'Book usually known by its title (online)'),
+					option({attrs: {value: 'chapterInBook'}}, 'One chapter / paper from a collection in a book'),
+					option({attrs: {value: 'journalArticle'}}, 'Journal article'),
+					option({attrs: {value: 'journalArticleOnline'}}, 'Journal article (online)'),
+				])
 			]),
 			h4('Format:'),
 			p('.format', Helpers.italicise(value.data.format)),
@@ -54,13 +56,16 @@ const view = value$ => value$
 				div(_.map(value.data.notes, note => p('.note', Helpers.italicise(note))))
 			]),
 			hr(),
-			!_.isEmpty(value.data.inputs) && div([
-				h4('Inputs:'),
+			!_.isEmpty(value.data.inputs) && div('.m-m-b', [
+				h4('.m-s-t', 'Inputs:'),
 				div(_.map(value.data.inputs, dataInput => input(`.${dataInput.name}`, {attrs: {type: 'text', placeholder: dataInput.placeholder}})))
 			]),
 			!!value.details && div([
-				h4('Result:'),
+				h4('.b', 'Result:'),
 				p('.result', Helpers.italicise(value.details))
+			]),
+			!value.details && div([
+				p('.c.i.grey', 'Enter the details of the item you want to reference in the inputs above.')
 			])
 		])
 	);

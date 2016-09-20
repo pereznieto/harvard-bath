@@ -1,17 +1,22 @@
 .reference {
-	.format {
-		//
+	.format,
+	.example,
+	.result {
+		text-indent: -55px;
+		padding-left: 55px;
+
+		@include responsive-max($screen-sm) {
+			text-indent: -34px;
+			padding-left: 34px;
+		}
 	}
 
-	.example {
-		//
-	}
-
-	.note {
-		//
+	.format,
+	.result {
+		font-weight: 600;
 	}
 
 	.result {
-		//
+		color: $green-main;
 	}
 }

@@ -39,7 +39,7 @@
 }
 
 .b {
-	font-weight: bold;
+	font-weight: 600;
 }
 
 // Font size
@@ -372,7 +372,7 @@
 }
 
 .grey {
-	color: $grey;
+	color: $grey-main;
 
 	&.light {
 		color: $grey-light;

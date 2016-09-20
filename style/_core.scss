@@ -1,5 +1,5 @@
 body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: Garamond, Georgia, serif;
 	font-weight: 300;
 	margin: 0;
 	padding: 0;
@@ -17,11 +17,11 @@ body {
 	border-radius: 5px;
 	box-shadow: $standard-box-shadow;
 	text-align: left;
-	margin: $spacing-medium;
-	padding: $spacing-small;
+	margin: $spacing-medium 20%;
+	padding: $spacing-medium;
 
 	@include responsive-max($screen-lg) {
-		margin: $spacing-small;
+		margin: $spacing-small 10%;
 	}
 
 	@include responsive-max($screen-sm) {
@@ -35,34 +35,81 @@ h2,
 h3,
 h4 {
 	margin-top: 0;
-	font-weight: 300;
-	line-height: 1.2;
+	margin-bottom: $spacing-small;
+	font-weight: 200;
+	line-height: 1;
 	color: $blue-main;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h1 {
 	font-size: $font-size-largest;
+	text-align: center;
+
+	@include responsive-max($screen-sm) {
+		font-size: $font-size-large;
+	}
 }
 
 h2 {
 	font-size: $font-size-large;
+	text-align: center;
+
+	@include responsive-max($screen-sm) {
+		font-size: $font-size-medium;
+	}
 }
 
 h3 {
 	font-size: $font-size-medium;
+
+	@include responsive-max($screen-sm) {
+		font-size: $font-size-small;
+	}
 }
 
 h4 {
-	font-size: $font-size-small;
+	font-size: $font-size-medium;
+	margin-top: $spacing-large;
+
+	@include responsive-max($screen-sm) {
+		font-size: $font-size-small;
+		margin-top: $spacing-small;
+	}
 }
 
 hr {
-	margin: 35px 30%;
+	margin: $spacing-large 20% 0 20%;
 	border-style: solid;
 	border-bottom: 0;
-	border-color: $grey-medium;
+	border-color: $grey-main;
+}
+
+select {
+	font-size: $font-size-medium;
+
+	@include responsive-max($screen-sm) {
+		font-size: $font-size-small;
+	}
 }
 
 input {
-	//
+	font-size: $font-size-small;
+	width: 30%;
+	padding: 5px;
+	margin: 0 5px $spacing-smallest 0;
+	border: 1px solid $blue-light;
+	border-radius: 3px;
+
+	@include responsive-max($screen-sm) {
+		width: 95%;
+	}
+
+	&.error {
+		border: 1px solid $red-main;
+	}
+
+	&.success {
+		border: 1px solid $green-main;
+	}
 }

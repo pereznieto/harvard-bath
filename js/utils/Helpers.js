@@ -1,4 +1,4 @@
-import {i} from '@cycle/dom';
+import {span} from '@cycle/dom';
 import _ from 'lodash';
 
 export default class Helpers {
@@ -16,11 +16,11 @@ export default class Helpers {
 			default:
 				return string;
 			case 3:
-				return [parts[0], i(parts[1]), parts[2]];
+				return [parts[0], span('.i', parts[1]), parts[2]];
 			case 4:
-				return [parts[0], i(parts[1]), parts[2], i(parts[3])]
+				return [parts[0], span('.i', parts[1]), parts[2], span('.i', parts[3])]
 			case 5:
-				return [parts[0], i(parts[1]), parts[2], i(parts[3]), parts[4]];
+				return [parts[0], span('.i', parts[1]), parts[2], span('.i', parts[3]), parts[4]];
 		}
 	}
 
