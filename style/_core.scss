@@ -1,0 +1,68 @@
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+	background-color: $grey-light;
+	color: $grey-dark;
+	font-size: $font-size-medium;
+
+	@include responsive-max($screen-sm) {
+		font-size: $font-size-small;
+	}
+}
+
+.page {
+	background-color: $white;
+	border-radius: 5px;
+	box-shadow: $standard-box-shadow;
+	text-align: left;
+	margin: $spacing-medium;
+	padding: $spacing-small;
+
+	@include responsive-max($screen-lg) {
+		margin: $spacing-small;
+	}
+
+	@include responsive-max($screen-sm) {
+		margin: $spacing-smallest;
+		padding: $spacing-smallest;
+	}
+}
+
+h1,
+h2,
+h3,
+h4 {
+	margin-top: 0;
+	font-weight: 300;
+	line-height: 1.2;
+	color: $blue-main;
+}
+
+h1 {
+	font-size: $font-size-largest;
+}
+
+h2 {
+	font-size: $font-size-large;
+}
+
+h3 {
+	font-size: $font-size-medium;
+}
+
+h4 {
+	font-size: $font-size-small;
+}
+
+hr {
+	margin: 35px 30%;
+	border-style: solid;
+	border-bottom: 0;
+	border-color: $grey-medium;
+}
+
+input {
+	//
+}

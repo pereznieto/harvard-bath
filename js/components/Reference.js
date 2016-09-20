@@ -29,8 +29,9 @@ const model = newValues$ => newValues$
 
 const view = value$ => value$
 	.map(value =>
-		div([
+		div('.page.reference', [
 			h1('Harvard (Bath) referencing style'),
+			h2(`How to reference: ${value.data.name}`),
 			select('.refType', [
 				option({attrs: {value: 'bookWithAuthor'}}, 'Book with author'),
 				option({attrs: {value: 'bookWithAuthorOnline'}}, 'Book with author (online)'),
@@ -42,7 +43,6 @@ const view = value$ => value$
 				option({attrs: {value: 'journalArticle'}}, 'Journal article'),
 				option({attrs: {value: 'journalArticleOnline'}}, 'Journal article (online)'),
 			]),
-			h2(`How to reference: ${value.data.name}`),
 			h4('Format:'),
 			p('.format', Helpers.italicise(value.data.format)),
 			!_.isEmpty(value.data.examples) && div([
