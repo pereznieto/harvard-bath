@@ -90,6 +90,8 @@ select {
 
 	@include responsive-max($screen-sm) {
 		font-size: $font-size-small;
+		word-wrap: break-word;
+		width: 85vw;
 	}
 }
 
