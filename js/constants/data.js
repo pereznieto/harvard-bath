@@ -5,10 +5,10 @@ import Helpers from '../utils/Helpers';
 export default {
 	bookWithAuthor: {
 		name: 'Book with author',
-		format: 'Author’s surname(s), INITIALS., Year. _Title_. Edition (if not the first). Place of publication: Publisher.',
+		format: 'Author’s surname(s), INITIALS., Year. __Title__. Edition (if not the first). Place of publication: Publisher.',
 		examples: [
-			'Open University, 1972. _Electricity and magnetism._ Bletchley: Open University Press.',
-			'Rang, H.P., Dale, M.M. Ritter, J.M., Flower, R.J. and Henderson, G., 2012. _Rang and Dale’s pharmacology._ 7th ed. Edinburgh: Elsevier Churchill Livingstone.'
+			'Open University, 1972. __Electricity and magnetism.__ Bletchley: Open University Press.',
+			'Rang, H.P., Dale, M.M. Ritter, J.M., Flower, R.J. and Henderson, G., 2012. __Rang and Dale’s pharmacology.__ 7th ed. Edinburgh: Elsevier Churchill Livingstone.'
 		],
 		notes: [
 			'You can shorten the name of the publisher, e.g. for John Wiley and Sons Inc., use Wiley.'
@@ -29,7 +29,7 @@ export default {
 			}, {
 				name: 'title0',
 				placeholder: 'Title*',
-				model: input => !!input ? `_${input}_. ` : ''
+				model: input => !!input ? `__${input}__. ` : ''
 			}, {
 				name: 'edition0',
 				placeholder: 'Edition',
@@ -47,9 +47,9 @@ export default {
 	},
 	bookWithEditor: {
 		name: 'Book with editor instead of author',
-		format: 'Editor’s surname, INITIALS., ed., Year. _Title_. Edition (if not the first). Place of publication: Publisher.',
+		format: 'Editor’s surname, INITIALS., ed., Year. __Title__. Edition (if not the first). Place of publication: Publisher.',
 		examples: [
-			'Rothman, K.J., Greenland, S. and Lash, T.L., eds., 2008. _Modern epidemiology._ 3rd ed. Philadelphia, Pa.: Lippincott Williams & Wilkins.'
+			'Rothman, K.J., Greenland, S. and Lash, T.L., eds., 2008. __Modern epidemiology.__ 3rd ed. Philadelphia, Pa.: Lippincott Williams & Wilkins.'
 		],
 		notes: [
 			'For US based publishers use the abbreviated form of the state, e.g. Pa. = Pennsylvania. See http://www.stateabbreviations.us/'
@@ -70,7 +70,7 @@ export default {
 			}, {
 				name: 'title1',
 				placeholder: 'Title*',
-				model: input => !!input ? `_${input}_. ` : ''
+				model: input => !!input ? `__${input}__. ` : ''
 			}, {
 				name: 'edition1',
 				placeholder: 'Edition',
@@ -88,16 +88,16 @@ export default {
 	},
 	bookKnownByTitle: {
 		name: 'Book usually known by its title',
-		format: '_Title_, Year. Edition (if not the first). Place of publication: Publisher.',
+		format: '__Title__, Year. Edition (if not the first). Place of publication: Publisher.',
 		examples: [
-			'_Oxford English dictionary_, 1989. 2nd ed. Oxford: Clarendon Press.'
+			'__Oxford English dictionary__, 1989. 2nd ed. Oxford: Clarendon Press.'
 		],
 		notes: [],
 		inputs: [
 			{
 				name: 'title2',
 				placeholder: 'Title*',
-				model: input => !!input ? `_${input}_, ` : ''
+				model: input => !!input ? `__${input}__, ` : ''
 			}, {
 				name: 'year2',
 				placeholder: 'Year*',
@@ -119,9 +119,9 @@ export default {
 	},
 	bookWithAuthorOnline: {
 		name: 'Book with author (online)',
-		format: 'Author’s surname(s), INITIALS., Year. _Title_ [Online]. Edition (if not the first). Place of publication: Publisher. Available from: _URL_ [Accessed date].',
+		format: 'Author’s surname(s), INITIALS., Year. __Title__ [Online]. Edition (if not the first). Place of publication: Publisher. Available from: __URL__ [Accessed date].',
 		examples: [
-			'Carroll, L., 2008. _Alice’s adventure in wonderland_ [Online]. Salt Lake City: Project Gutenberg. Available from: _http://www.gutenberg.org/ebooks/11_ [Accessed 22 November 2012].'
+			'Carroll, L., 2008. __Alice’s adventure in wonderland__ [Online]. Salt Lake City: Project Gutenberg. Available from: __http://www.gutenberg.org/ebooks/11__ [Accessed 22 November 2012].'
 		],
 		notes: [
 			'If the e-book is a direct equivalent of a print book e.g. in PDF format, you can reference it as a normal print book.'
@@ -142,7 +142,7 @@ export default {
 			}, {
 				name: 'title3',
 				placeholder: 'Title*',
-				model: input => !!input ? `_${input}_ [Online]. ` : ''
+				model: input => !!input ? `__${input}__ [Online]. ` : ''
 			}, {
 				name: 'edition3',
 				placeholder: 'Edition',
@@ -158,7 +158,7 @@ export default {
 			}, {
 				name: 'url3',
 				placeholder: 'URL*',
-				model: input => !!input ? `Available from: _${input}_ ` : ''
+				model: input => !!input ? `Available from: __${input}__ ` : ''
 			}, {
 				name: 'accessDate3',
 				placeholder: 'Access Date*',
@@ -168,9 +168,9 @@ export default {
 	},
 	bookWithEditorOnline: {
 		name: 'Book with editor instead of author (online)',
-		format: 'Editor’s surname, INITIALS., ed., Year. _Title_ [Online]. Edition (if not the first). Place of publication: Publisher. Available from: _URL_ [Accessed date].',
+		format: 'Editor’s surname, INITIALS., ed., Year. __Title__ [Online]. Edition (if not the first). Place of publication: Publisher. Available from: __URL__ [Accessed date].',
 		examples: [
-			'Haynes, W.M., ed., 2014. _CRC handbook of chemistry and physics_ [Online]. 94th ed. Boca Raton, Fla.: CRC Press/Taylor and Francis. Available from: _http://www.hbcpnetbase.com_ [Accessed 16/06/2016].'
+			'Haynes, W.M., ed., 2014. __CRC handbook of chemistry and physics__ [Online]. 94th ed. Boca Raton, Fla.: CRC Press/Taylor and Francis. Available from: __http://www.hbcpnetbase.com__ [Accessed 16/06/2016].'
 		],
 		notes: [
 			'If the e-book is a direct equivalent of a print book e.g. in PDF format, you can reference it as a normal print book.'
@@ -191,7 +191,7 @@ export default {
 			}, {
 				name: 'title4',
 				placeholder: 'Title*',
-				model: input => !!input ? `_${input}_ [Online]. ` : ''
+				model: input => !!input ? `__${input}__ [Online]. ` : ''
 			}, {
 				name: 'edition4',
 				placeholder: 'Edition',
@@ -207,7 +207,7 @@ export default {
 			}, {
 				name: 'url4',
 				placeholder: 'URL*',
-				model: input => !!input ? `Available from: _${input}_ ` : ''
+				model: input => !!input ? `Available from: __${input}__ ` : ''
 			}, {
 				name: 'accessDate4',
 				placeholder: 'Access Date*',
@@ -217,9 +217,9 @@ export default {
 	},
 	bookKnownByTitleOnline: {
 		name: 'Book usually known by its title (online)',
-		format: '_Title_ [Online], Year. Edition (if not the first). Place of publication: Publisher. Available from: _URL_ [Accessed date].',
+		format: '__Title__ [Online], Year. Edition (if not the first). Place of publication: Publisher. Available from: __URL__ [Accessed date].',
 		examples: [
-			'_The Merck index online_ [Online]. London: RSC Publishing. Available from: _http://www.rsc.org/Merck-Index_ [Accessed 16/06/2016].'
+			'__The Merck index online__ [Online]. London: RSC Publishing. Available from: __http://www.rsc.org/Merck-Index__ [Accessed 16/06/2016].'
 		],
 		notes: [
 			'If the e-book is a direct equivalent of a print book e.g. in PDF format, you can reference it as a normal print book.'
@@ -228,7 +228,7 @@ export default {
 			{
 				name: 'title5',
 				placeholder: 'Title*',
-				model: input => !!input ? `_${input}_ [Online], ` : ''
+				model: input => !!input ? `__${input}__ [Online], ` : ''
 			}, {
 				name: 'year5',
 				placeholder: 'Year*',
@@ -248,7 +248,7 @@ export default {
 			}, {
 				name: 'url5',
 				placeholder: 'URL*',
-				model: input => !!input ? `Available from: _${input}_ ` : ''
+				model: input => !!input ? `Available from: __${input}__ ` : ''
 			}, {
 				name: 'accessDate5',
 				placeholder: 'Access Date*',
@@ -258,9 +258,9 @@ export default {
 	},
 	chapterInBook: {
 		name: 'One chapter / paper from a collection in a book',
-		format: 'Author of paper’s surname, INITIALS., Year. Title of paper. In: INITIALS. Surname of author/editor of book, followed by ed. or eds. if relevant. _Title of book_. Edition (if not the first). Place of publication: Publisher, page numbers of paper or chapter.',
+		format: 'Author of paper’s surname, INITIALS., Year. Title of paper. In: INITIALS. Surname of author/editor of book, followed by ed. or eds. if relevant. __Title of book__. Edition (if not the first). Place of publication: Publisher, page numbers of paper or chapter.',
 		examples: [
-			'Reid, D.R., 1967. Physical testing of polymer films. In: S.H. Pinner, ed. _Modern packaging films_. London: Butterworths, pp.143–183.'
+			'Reid, D.R., 1967. Physical testing of polymer films. In: S.H. Pinner, ed. __Modern packaging films__. London: Butterworths, pp.143–183.'
 		],
 		notes: [
 			'Add ‘ed.’ after the book’s editors surname if book has an editor rather than an author.'
@@ -293,7 +293,7 @@ export default {
 			}, {
 				name: 'titleBook6',
 				placeholder: 'Book’s Title*',
-				model: input => !!input ? `_${input}_. ` : ''
+				model: input => !!input ? `__${input}__. ` : ''
 			}, {
 				name: 'edition6',
 				placeholder: 'Edition',
@@ -319,9 +319,9 @@ export default {
 	},
 	journalArticle: {
 		name: 'Journal article',
-		format: 'Author’s surname, INITIALS., Year. Title of article. _Title of journal_, Volume number(issue), page numbers.',
+		format: 'Author’s surname, INITIALS., Year. Title of article. __Title of journal__, Volume number(issue), page numbers.',
 		examples: [
-			'Newman, R., 2010. Malaria control beyond the decade. _British Medicine Journal_, 341(7765), pp.157-208.'
+			'Newman, R., 2010. Malaria control beyond the decade. __British Medicine Journal__, 341(7765), pp.157-208.'
 		],
 		notes: [
 			'You can give journal titles in full or abbreviate them, depending on the preference of your Department/tutor. If you can’t find the abbreviation, find and use the full title here: http://www.bath.ac.uk/library/help/infoguides/abbreviations.html'
@@ -346,7 +346,7 @@ export default {
 			}, {
 				name: 'titleJournal7',
 				placeholder: 'Journal’s Title*',
-				model: input => !!input ? `_${input}_, ` : ''
+				model: input => !!input ? `__${input}__, ` : ''
 			}, {
 				name: 'volume7',
 				placeholder: 'Volume number*',
@@ -368,9 +368,9 @@ export default {
 	},
 	journalArticleOnline: {
 		name: 'Journal article (online)',
-		format: 'Author’s surname, INITIALS., Year. Title. _Journal title_ [Online], volume(issue). Available from: _URL_ [Accessed date].',
+		format: 'Author’s surname, INITIALS., Year. Title. __Journal title__ [Online], volume(issue). Available from: __URL__ [Accessed date].',
 		examples: [
-			'Williams, F., 1997. Electronic document delivery: a trial in an academic library. _Ariadne_ [Online], 10. Available from: _http://www.ariadne.ac.uk/issue10/edd/_ [Accessed 05/12/1997].'
+			'Williams, F., 1997. Electronic document delivery: a trial in an academic library. __Ariadne__ [Online], 10. Available from: __http://www.ariadne.ac.uk/issue10/edd/__ [Accessed 05/12/1997].'
 		],
 		notes: [
 			'Look for a PDF version of the article online. This will almost always be identical to the print version, so even if you read it online you can reference it as a print journal article. As a general rule, if there are page numbers, reference the article as you would the print version, without the URL or [Online].',
@@ -396,7 +396,7 @@ export default {
 			}, {
 				name: 'titleJournal8',
 				placeholder: 'Journal’s Title*',
-				model: input => !!input ? `_${input}_ [Online], ` : ''
+				model: input => !!input ? `__${input}__ [Online], ` : ''
 			}, {
 				name: 'volume8',
 				placeholder: 'Volume number*',
@@ -408,9 +408,55 @@ export default {
 			}, {
 				name: 'url8',
 				placeholder: 'URL*',
-				model: input => !!input ? `Available from: _${input}_ ` : ''
+				model: input => !!input ? `Available from: __${input}__ ` : ''
 			}, {
 				name: 'accessDate8',
+				placeholder: 'Access Date*',
+				model: input => !!input ? `[Accessed ${input}].` : ''
+			}
+		]
+	},
+	website: {
+		name: 'Websites',
+		format: 'Author’s surname, INITIALS., Year (if known). __Title__ [Online]. (Edition if known). Place of publication: Publisher (if known). Available from: __URL__ [Accessed date].',
+		examples: [
+			'Holland, M., 2002. _Guide to citing internet sources_ [Online]. Poole: Bournemouth University. Available from: __http://www.bournemouth.ac.uk/library/using/guide_to_citing_internet_sourc.html__ [Accessed 04/11/2002].',
+			'Wiltshire Council, 2015. _Get Wiltshire walking_ [Online]. Trowbridge: Wiltshire Council. Available from: __http://www.wiltshire.gov.uk/leisureandrecreation/sportphysicalactivity/getwiltshirewalking.html__ [Accessed 19/08/2015].'
+		],
+		notes: [
+			'If a website has no personal author use the organisation publishing the website as author (see second example above).'
+		],
+		inputs: [
+			{
+				name: 'author9',
+				placeholder: 'Author*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'year9',
+				placeholder: 'Year',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'title9',
+				placeholder: 'Title*',
+				model: input => !!input ? `__${input}__ [Online]. ` : ''
+			}, {
+				name: 'edition9',
+				placeholder: 'Edition',
+				model: input => !!input ? `${input} ed. ` : ''
+			}, {
+				name: 'place9',
+				placeholder: 'Place of publication',
+				model: input => !!input ? `${input}: ` : ''
+			}, {
+				name: 'publisher9',
+				placeholder: 'Publisher',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'url9',
+				placeholder: 'URL*',
+				model: input => !!input ? `Available from: __${input}__ ` : ''
+			}, {
+				name: 'accessDate9',
 				placeholder: 'Access Date*',
 				model: input => !!input ? `[Accessed ${input}].` : ''
 			}

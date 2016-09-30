@@ -7,7 +7,7 @@ export default class Helpers {
 	}
 
 	static italicise(string) {
-		const parts = _.split(string, '_');
+		const parts = _.split(string, '__');
 
 		switch (parts.length) {
 			case 0:

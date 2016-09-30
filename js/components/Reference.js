@@ -1,5 +1,5 @@
 import xs from 'xstream';
-import {div, input, select, option, h1, h2, h3, h4, p, span, hr} from '@cycle/dom';
+import {div, input, select, option, h1, h2, h3, h4, p, span, hr, ul, li} from '@cycle/dom';
 import _ from 'lodash';
 import Helpers from '../utils/Helpers';
 import Data from '../constants/data';
@@ -43,6 +43,7 @@ const view = value$ => value$
 					option({attrs: {value: 'chapterInBook'}}, 'One chapter / paper from a collection in a book'),
 					option({attrs: {value: 'journalArticle'}}, 'Journal article'),
 					option({attrs: {value: 'journalArticleOnline'}}, 'Journal article (online)'),
+					option({attrs: {value: 'website'}}, 'Websites'),
 				])
 			]),
 			h4('Format:'),
@@ -53,7 +54,7 @@ const view = value$ => value$
 			]),
 			!_.isEmpty(value.data.notes) && div([
 				h4(`Note${value.data.notes.length > 1 ? 's' : ''}:`),
-				div(_.map(value.data.notes, note => p('.note', Helpers.italicise(note))))
+				ul(_.map(value.data.notes, note => li('.note', Helpers.italicise(note))))
 			]),
 			hr(),
 			!_.isEmpty(value.data.inputs) && div('.m-m-b', [
