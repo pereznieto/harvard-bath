@@ -461,5 +461,123 @@ export default {
 				model: input => !!input ? `[Accessed ${input}].` : ''
 			}
 		]
+	},
+	conferenceEditor: {
+		name: 'Conference paper (when proceedings have a named editor)',
+		format: 'Author of paper’s surname, INITIALS., Year. Title of paper. In: INITIALS. surname of editor, ed. __Title of conference proceedings__, full date and place of conference. Place of publication: Publisher, page numbers of paper.',
+		examples: [
+			'Crawford, G.I., 1965. Oxygen in metals. In: J.M.A. Lenihan AND S.J. Thompson, eds. __Activation analysis: proceedings of a NATO Advanced Study Institute__, 2-4 August 1964 Glasgow. London: Academic Press, pp.113-118.'
+		],
+		notes: [],
+		inputs: [
+			{
+				name: 'surnameA',
+				placeholder: 'Surname(s)*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'initialsA',
+				placeholder: 'Initials*',
+				model: input => !!input ? `${Helpers.parseInitials(input)}, ` : ''
+			}, {
+				name: 'yearA',
+				placeholder: 'Year*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'paperTitleA',
+				placeholder: 'Title of Paper*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'initialsEditorA',
+				placeholder: 'Editor’s initials*',
+				model: input => !!input ? `In: ${Helpers.parseInitials(input)}, ` : ''
+			},{
+				name: 'surnameEditorA',
+				placeholder: 'Editor’s surname(s)*',
+				model: input => !!input ? `${input}, ed. ` : ''
+			}, {
+				name: 'conferenceTitleA',
+				placeholder: 'Title of conference proceedings*',
+				model: input => !!input ? `__${input}__, ` : ''
+			}, {
+				name: 'dateA',
+				placeholder: 'Full date of proceedings*',
+				model: input => !!input ? `${input} ` : ''
+			}, {
+				name: 'placeA',
+				placeholder: 'Place of proceedings*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'placePublicationA',
+				placeholder: 'Place of publication*',
+				model: input => !!input ? `${input}: ` : ''
+			}, {
+				name: 'publisherA',
+				placeholder: 'Publisher*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'pageStartA',
+				placeholder: 'Paper’s start page*',
+				model: input => !!input ? `pp.${input}–` : ''
+			}, {
+				name: 'pageEndA',
+				placeholder: 'Paper’s end page*',
+				model: input => !!input ? `${input}.` : ''
+			}
+		]
+	},
+	conference: {
+		name: 'Conference paper (when proceedings have no named editor or are part of a major series)',
+		format: 'Author of paper’s surname, INITIALS., Year. Title of paper. __Title of conference proceedings__, full date and place of conference. Place of publication: Publisher, page numbers of paper.',
+		examples: [
+			'Soper, D., 1972. Review of bracken control experiments with asulam. __Proceedings of the 11th British Weed Control Conference__, 15-17 November 1972 Brighton. Brighton: University of Sussex, pp.24-31.'
+		],
+		notes: [],
+		inputs: [
+			{
+				name: 'surnameB',
+				placeholder: 'Surname(s)*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'initialsB',
+				placeholder: 'Initials*',
+				model: input => !!input ? `${Helpers.parseInitials(input)}, ` : ''
+			}, {
+				name: 'yearB',
+				placeholder: 'Year*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'paperTitleB',
+				placeholder: 'Title of Paper*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'conferenceTitleB',
+				placeholder: 'Title of conference proceedings*',
+				model: input => !!input ? `__${input}__, ` : ''
+			}, {
+				name: 'dateB',
+				placeholder: 'Full date of proceedings*',
+				model: input => !!input ? `${input} ` : ''
+			}, {
+				name: 'placeB',
+				placeholder: 'Place of proceedings*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'placePublicationB',
+				placeholder: 'Place of publication*',
+				model: input => !!input ? `${input}: ` : ''
+			}, {
+				name: 'publisherB',
+				placeholder: 'Publisher*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'pageStartB',
+				placeholder: 'Paper’s start page*',
+				model: input => !!input ? `pp.${input}–` : ''
+			}, {
+				name: 'pageEndB',
+				placeholder: 'Paper’s end page*',
+				model: input => !!input ? `${input}.` : ''
+			}
+		]
 	}
 }
