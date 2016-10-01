@@ -579,5 +579,41 @@ export default {
 				model: input => !!input ? `${input}.` : ''
 			}
 		]
+	},
+	newspaper: {
+		name: 'Newspaper article',
+		format: 'Author’s surname, INITIALS. (or newspaper title if author unknown), Year. Title of article. __Title of newspaper__, day and month, page number/s and column letter.',
+		examples: [
+			'Haurant, S., 2004. Britain’s borrowing hits £1 trillion. __The Guardian__, 29 July, p.16c.',
+			'The Independent, 1992. Picking up the bills. __The Independent__, 4 June, p.28a.'
+		],
+		notes: [],
+		inputs: [
+			{
+				name: 'authorC',
+				placeholder: 'Author’s surname and initals(s)/newspaper title*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'yearC',
+				placeholder: 'Year*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'articleC',
+				placeholder: 'Title of article*',
+				model: input => !!input ? `${input}. ` : ''
+			}, {
+				name: 'newspaperC',
+				placeholder: 'Title of newspaper*',
+				model: input => !!input ? `__${input}__, ` : ''
+			}, {
+				name: 'dateC',
+				placeholder: 'Day and month*',
+				model: input => !!input ? `${input}, ` : ''
+			}, {
+				name: 'pageC',
+				placeholder: 'Page number(s) and column letter*',
+				model: input => !!input ? `p.${input}.` : ''
+			}
+		]
 	}
 }

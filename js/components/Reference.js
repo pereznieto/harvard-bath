@@ -46,6 +46,7 @@ const view = value$ => value$
 					option({attrs: {value: 'website'}}, 'Websites'),
 					option({attrs: {value: 'conferenceEditor'}}, 'Conference paper (when proceedings have a named editor)'),
 					option({attrs: {value: 'conference'}}, 'Conference paper (when proceedings have no named editor)'),
+					option({attrs: {value: 'newspaper'}}, 'Newspaper article'),
 				])
 			]),
 			h4('Format:'),
